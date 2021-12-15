@@ -40,9 +40,18 @@ WHERE d.name = 'Corso di laurea in economia';
 SELECT *
 FROM `degrees` deg
 INNER JOIN departments dep
-ON deg.department_id = dep.id
+ON dep.id = deg.department_id
 WHERE dep.name = 'Dipartimento di Neuroscienze' AND `level` = 'magistrale';
 
 -- 12. Selezionare tutti i corsi in cui insegna Fulvio Amato
+SELECT c.name AS course_name
+FROM course_teacher ct 
+INNER JOIN teachers t 
+ON ct.teacher_id = t.id
+INNER JOIN courses c
+ON ct.course_id = c.id
+WHERE t.name = 'Fulvio' AND t.surname = 'Amato';
+
 -- 13. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome
+
 -- BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per superare ciascuno dei suoi esami
