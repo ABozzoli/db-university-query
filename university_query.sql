@@ -11,10 +11,15 @@ SELECT * FROM students WHERE TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()) > 30;
 SELECT * FROM `degrees` WHERE `level` = 'triennale';
 
 -- 5. Da quanti dipartimenti è composta l’università?
-SELECT COUNT(id) as number_of_departments FROM departments;
+SELECT COUNT(id) AS number_of_departments FROM departments;
 
 -- 6. Quanti sono gli insegnanti che non hanno un numero di telefono?
+SELECT * FROM teachers WHERE phone IS NULL;
+
 -- 7. Contare quanti iscritti ci sono stati ogni anno
+SELECT YEAR(enrolment_date) AS enrolment_year, COUNT(id) AS total_enrolments FROM students
+GROUP BY YEAR(enrolment_date);
+
 -- 8. Calcolare la media dei voti di ogni appello d’esame
 -- 9. Contare quanti corsi di laurea ci sono per ogni dipartimento
 -- 10. Selezionare tutti gli studenti iscritti al Corso di Laurea in Economia
