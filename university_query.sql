@@ -21,9 +21,16 @@ SELECT YEAR(enrolment_date) AS enrolment_year, COUNT(id) AS total_enrolments FRO
 GROUP BY YEAR(enrolment_date);
 
 -- 8. Calcolare la media dei voti di ogni appello d’esame
+SELECT exam_id, AVG(vote) AS average_vote FROM exam_student
+GROUP BY exam_id;
+
 -- 9. Contare quanti corsi di laurea ci sono per ogni dipartimento
+SELECT dep.name AS department_name, COUNT(deg.id) AS number_of_degrees FROM departments dep
+INNER JOIN `degrees` deg ON dep.id = deg.department_id 
+GROUP BY dep.name;
+
 -- 10. Selezionare tutti gli studenti iscritti al Corso di Laurea in Economia
--- 11. Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze
+-- 11. Selezionare tutti i corsi di Laurea Magistrale del Dipartimento di Neuroscienze
 -- 12. Selezionare tutti i corsi in cui insegna Fulvio Amato
 -- 13. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome
 -- BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per superare ciascuno dei suoi esami
