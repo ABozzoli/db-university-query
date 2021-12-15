@@ -53,5 +53,12 @@ ON ct.course_id = c.id
 WHERE t.name = 'Fulvio' AND t.surname = 'Amato';
 
 -- 13. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome
+SELECT s.surname, s.name, deg.name AS `degree`, dep.name AS department
+FROM departments dep
+INNER JOIN `degrees` deg
+ON deg.department_id = dep.id
+INNER JOIN students s 
+ON s.degree_id = deg.id
+ORDER BY s.surname, s.name ASC;
 
 -- BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per superare ciascuno dei suoi esami
