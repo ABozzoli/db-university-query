@@ -8,7 +8,11 @@ SELECT * FROM courses WHERE cfu > 10;
 SELECT * FROM students WHERE TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()) > 30; 
 
 -- 4. Selezionare tutti i corsi di laurea magistrale
+SELECT * FROM `degrees` WHERE `level` = 'triennale';
+
 -- 5. Da quanti dipartimenti è composta l’università?
+SELECT COUNT(id) as number_of_departments FROM departments;
+
 -- 6. Quanti sono gli insegnanti che non hanno un numero di telefono?
 -- 7. Contare quanti iscritti ci sono stati ogni anno
 -- 8. Calcolare la media dei voti di ogni appello d’esame
