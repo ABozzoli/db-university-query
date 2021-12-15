@@ -30,11 +30,19 @@ INNER JOIN `degrees` deg ON dep.id = deg.department_id
 GROUP BY dep.name;
 
 -- 10. Selezionare tutti gli studenti iscritti al Corso di Laurea in Economia
-SELECT * FROM students s
-INNER JOIN `degrees` d ON d.id = s.degree_id
+SELECT *
+FROM students s
+INNER JOIN `degrees` d
+ON d.id = s.degree_id
 WHERE d.name = 'Corso di laurea in economia';
 
 -- 11. Selezionare tutti i corsi di Laurea Magistrale del Dipartimento di Neuroscienze
+SELECT *
+FROM `degrees` deg
+INNER JOIN departments dep
+ON deg.department_id = dep.id
+WHERE dep.name = 'Dipartimento di Neuroscienze' AND `level` = 'magistrale';
+
 -- 12. Selezionare tutti i corsi in cui insegna Fulvio Amato
 -- 13. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome
 -- BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per superare ciascuno dei suoi esami
